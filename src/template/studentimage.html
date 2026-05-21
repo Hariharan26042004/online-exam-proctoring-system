@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+    <style>
+        body {
+            background: url('https://examonline.in/wp-content/uploads/2022/08/featured1.png');          
+        }
+
+        #imageContainer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .imageWrapper {
+            text-align: center;
+            margin-right: 10px;
+            margin-bottom: 20px;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        p {
+            margin: 0;
+            font-size: 20px;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Result</h1>
+    <div id="imageContainer"></div>
+
+    <script>
+        fetch('/getresult')
+            .then(response => response.json())
+            .then(data => {
+                const imageContainer = document.getElementById('imageContainer');
+
+                data.forEach((image, index) => {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'imageWrapper';
+
+                    const imgElement = document.createElement('img');
+                    imgElement.src = '/static/graphs/' + image.filename;
+                    imgElement.alt = image.filename;
+
+                    const pElement = document.createElement('p');
+                    pElement.textContent = image.filename;
+
+                    wrapper.appendChild(pElement);
+                    wrapper.appendChild(imgElement);
+
+                    imageContainer.appendChild(wrapper);
+                });
+            });
+    </script>
+</body>
+</html>

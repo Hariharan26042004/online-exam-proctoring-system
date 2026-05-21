@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Proctoring System</title>
+    <style>
+        body {
+            background: url('https://examonline.in/wp-content/uploads/2022/08/featured1.png') center/cover no-repeat;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s;
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        h3 {
+            font-size: 20px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        .custom-button,
+        button {
+            display: inline-block;
+            width: 75%;
+            padding: 9px; 
+            margin: 10px 0;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+        .container:hover {
+            transform: scale(1.05);
+        }
+
+        .custom-button:hover,
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        hr {
+            margin-top: 20px;
+            border: none;
+            border-top: 1px solid #fff;
+            width: 100%;
+        }
+        .logout-btn1 {
+            display: inline-block;
+            width: 75%; 
+            padding: 9px; 
+            background-color: #dc3545; 
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .logout-btn1:hover {
+            background-color: #c82333;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header text-primary text-center">ONLINE EXAM PROCTORING SYSTEM</h2>
+        <h3 class="text-success">Welcome: {{session["name"]}}</h3>
+        <hr>
+        <form method="POST" action="/start">
+            <button type="submit" class="custom-button">START SESSION</button>
+        </form>
+        
+        <form method="POST" action="/end">
+            <button type="submit" class="custom-button">END SESSION</button>
+        </form>
+        <hr>
+        <a href="{{url_for('studentlogout')}}" class="logout-btn1">Logout</a>
+    </div>
+</body>
+</html>
+

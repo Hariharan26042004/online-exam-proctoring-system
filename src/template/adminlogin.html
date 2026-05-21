@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <style>
+        body {
+            background: url('https://examonline.in/wp-content/uploads/2022/08/featured1.png') center/cover no-repeat;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s;
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center; /* Center text content */
+        }
+
+        h3 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #fff;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(75% - 24px); /* Reduced width to 75% */
+            padding: 10px; /* Reduced padding */
+            margin-top: 8px;
+            margin-bottom: 12px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            box-sizing: border-box;
+            color: #fff;
+            margin: 0 auto; /* Center the input */
+        }
+
+        input[type="submit"],
+        a.btn {
+            display: block;
+            width: calc(50% - 24px); /* Reduced width to 50% */
+            padding: 8px; /* Reduced padding */
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 0 auto; /* Center the button */
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        a.btn {
+            background-color: #007bff;
+            margin-top: 15px;
+        }
+
+        a.btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+        h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #28a745;
+            font-weight: bold; /* Added font-weight property */
+        }
+        .alert {
+    padding: 15px;
+    border: 1px solid;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.alert-error {
+    color: red;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="/adminlog" method="POST" autocomplete="off">
+            <h3 class="page-header text-primary">ADMIN LOGIN</h3>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} {% if category == 'error' %}alert-error{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-success btn-block">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

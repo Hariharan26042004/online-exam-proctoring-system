@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Exam Proctoring System</title>
+    <style>
+        body {
+            background: url('https://examonline.in/wp-content/uploads/2022/08/featured1.png') center/cover no-repeat;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            max-width: 500px; 
+            width: 80%; 
+            max-height: 500px; 
+            height: auto; 
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 2px solid #333;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transform: translateY(-10px);
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+.container:hover {
+    transform: translateY(-6px);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #007bff;
+    font-size: 24px; 
+    font-weight: bold; 
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 10px;
+    border-radius: 6px;
+    text-align: justify;
+}
+
+button {
+    display: inline-block;
+    padding: 12px;
+    margin: 10px 0;
+    width: 100%;
+    max-width: 200px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    font-family: 'Roboto', sans-serif; 
+}
+
+button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Online Exam Proctoring System</h1>
+
+        <p>
+            Welcome to our Online Exam Proctoring System. This system ensures the integrity and security of online exams by employing advanced proctoring techniques. Students and administrators can use the following options!!!
+        </p>
+
+        <form method="POST" action="/student">
+            <button type="submit">Student</button>
+        </form>
+
+        <form method="POST" action="/admin">
+            <button type="submit">Admin</button>
+        </form>
+    </div>
+</body>
+</html>

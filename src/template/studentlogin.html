@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Login</title>
+    <style>
+        body {
+            background: url('https://examonline.in/wp-content/uploads/2022/08/featured1.png') center/cover no-repeat;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        
+
+        form {
+            width: 80%;
+            max-width: 700px;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s;
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+            margin: 20px; 
+        }
+
+        form:hover {
+            transform: scale(1.05);
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input {
+            width: 50%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 10px;
+            
+        }
+
+        .btn {
+            display: inline-block;
+            width: 50%; 
+            height: 40px; 
+            padding: 4px; 
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+        }
+        h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #28a745;
+            font-weight: bold; 
+        }
+        .alert {
+    padding: 15px;
+    border: 1px solid;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.alert-error {
+    color: red;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="/studentslogin" method="POST" autocomplete="off">
+            <h3 class="page-header text-primary">STUDENT LOGIN</h3>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} {% if category == 'error' %}alert-error{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-success btn-block">
+                
+            </div>
+        </form>
+    </div>
+</body>
+</html>

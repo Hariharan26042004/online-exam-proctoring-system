@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video List</title>
+    <style>
+        body {
+            background: url('https://examonline.in/wp-content/uploads/2022/08/featured1.png') ;
+        }
+
+        li {
+            color: #04ff00; 
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: flex; 
+            align-items: left; 
+        }
+
+        li button {
+            background-color: #00ff0d;
+        }
+
+        #video-container {
+            position: fixed;
+            top: 10px; 
+            right: 10px; 
+            text-align: center; 
+        }
+
+        #video-container video {
+            max-width: 100%; 
+        }
+
+        #cancel-button {
+            background-color: #ff0000; 
+            padding: 10px;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        #cancel-button:hover {
+            background-color: #d60000;
+        }
+        .list-container {
+            width: 45%; 
+            margin-top: 20px;
+        }
+        .list-item {
+            color: #04ff00;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            padding: 10px; 
+            background-color: #333; 
+            border-radius: 6px;
+        }
+        .list-item button {
+            width: 10%; 
+            padding: 15px; 
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #00ff0d;
+        }
+
+        .list-item button:hover {
+            background-color: #71b300;
+            transform: scale(1.05);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="list-container">
+        <ul>
+            {% if videos %}
+                {% for video in videos %}
+                    <li class="list-item">
+                        <span>{{ video }}</span>
+                        <button onclick="playVideo('{{ video }}')">Play</button>
+                    </li>
+                {% endfor %}
+            {% else %}
+                <p>{{ message }}</p>
+            {% endif %}
+        </ul>
+    </div>
+
+    <div id="video-container">
+        <video id="video-element" controls></video>
+        <button id="cancel-button" onclick="cancelVideo()">Cancel</button>
+    </div>
+
+    <script>
+        function playVideo(videoFileName) {
+            var videoPath = 'static/videos/' + videoFileName;
+            var videoContainer = document.getElementById('video-container');
+            var videoElement = document.getElementById('video-element');
+
+            // Show the video container
+            videoContainer.style.display = 'block';
+
+            // Set video source and controls
+            videoElement.src = videoPath;
+            videoElement.controls = true;
+
+            // Wait for the video to be loaded, then play it
+            videoElement.addEventListener('loadedmetadata', function() {
+                videoElement.play();
+            });
+        }
+
+        function cancelVideo() {
+            var videoContainer = document.getElementById('video-container');
+            var videoElement = document.getElementById('video-element');
+
+            // Pause and reset the video
+            videoElement.pause();
+            videoElement.currentTime = 0;
+
+            // Hide the video container
+            videoContainer.style.display = 'none';
+        }
+    </script>
+</body>
+</html>

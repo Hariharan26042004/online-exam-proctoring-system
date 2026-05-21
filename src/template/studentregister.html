@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Registration</title>
+    <style>
+        body {
+            background: url('https://examonline.in/wp-content/uploads/2022/08/featured1.png') center/cover no-repeat;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 60%;
+            max-width: 500px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s;
+            background-color: rgba(0, 0, 0, 0.6);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #fff;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 12px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            box-sizing: border-box;
+            color: #fff;
+        }
+
+        input[type="submit"],
+        a.btn {
+            display: inline-block;
+            width: 60%; 
+            padding: 15px; 
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+
+        input[type="submit"] {
+            background-color: #28a745;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        a.btn {
+            background-color: #007bff;
+            margin-top: 15px;
+        }
+
+        a.btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .container:hover {
+            transform: scale(1.05);
+        }
+        .back-to-home-form {
+    margin-top: 20px;
+}
+
+.back-to-home-button {
+            display: inline-block;
+            width: 60%; 
+            padding: 15px; 
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            background-color: #007bff;
+            margin-top: 15px;
+}
+
+.back-to-home-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #28a745;
+            font-weight: bold; 
+        }
+        .alert {
+    padding: 15px;
+    border: 1px solid;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.alert-error {
+    color: red;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form method="POST" action="/studentregister">
+            <h2 class="page-header text-primary text-center">STUDENT REGISTRATION</h2>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} {% if category == 'error' %}alert-error{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" name="name" required>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <textarea class="form-control" name="address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label>Contact</label>
+                <input type="text" class="form-control" name="contact" required>
+            </div>
+            <div class="form-group">
+                <label>Mail</label>
+                <input type="text" class="form-control" name="mail" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success btn-block" value="Register">
+            </div>
+        </form>
+        <form method="POST" action="/studentlogin1" class="back-to-home-form">
+            <button type="submit" class="back-to-home-button">Back to Home</button>
+        </form>
+    </div>
+</body>
+</html>
